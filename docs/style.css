@@ -227,15 +227,18 @@ header {
 
 .md-content li {
   margin-bottom: 1rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  position: relative;
+  padding-left: 1.25rem;
+  display: block;
 }
 
 .md-content li::before {
   content: '•';
   color: var(--primary);
   font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .md-content img {
@@ -374,6 +377,8 @@ code {
 .color-yellow { color: #fbbf24; font-weight: 700; text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
 .color-purple { color: #c084fc; font-weight: 700; text-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
 .color-white { color: #ffffff; font-weight: 700; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+.color-black { color: #94a3b8; font-weight: 700; text-shadow: 0 0 10px rgba(148, 163, 184, 0.3); }
+.color-orange { color: #fb923c; font-weight: 700; text-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
 
 .wire-badge {
   display: inline-flex;
@@ -398,6 +403,8 @@ code {
 .dot-green { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
 .dot-yellow { background: #fbbf24; box-shadow: 0 0 8px #fbbf24; }
 .dot-purple { background: #c084fc; box-shadow: 0 0 8px #c084fc; }
+.dot-black { background: #94a3b8; box-shadow: 0 0 8px #94a3b8; }
+.dot-orange { background: #fb923c; box-shadow: 0 0 8px #fb923c; }
 
 /* --- Action List --- */
 .action-item {
@@ -616,4 +623,65 @@ code {
   .hacker-terminal { margin: 1rem 1rem; }
   .app-container { flex-direction: column; }
   aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--glass-border); }
+}
+/* --- Component Hover Preview --- */
+.component-pill {
+  color: var(--primary);
+  font-weight: 700;
+  cursor: help;
+  position: relative;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+  display: inline-block;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.component-pill:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-bottom-color: var(--primary);
+}
+
+.component-pill::after {
+  content: "";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 220px;
+  height: 220px;
+  background-image: var(--pill-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 2px solid var(--primary);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 200;
+}
+
+.component-pill::before {
+  content: "";
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--primary) transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 200;
+}
+
+.component-pill:hover::after,
+.component-pill:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

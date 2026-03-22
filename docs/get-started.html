@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potager Connecté - Guide de Montage</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <div class="app-container">
+    <aside>
+      <div class="nav-logo">
+        <i data-lucide="sprout"></i>
+        <span>Potager OS</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html"><i data-lucide="home"></i> Accueil</a></li>
+          <li class="nav-category">Get Started</li>
+          <li><a href="#intro" class="active"><i data-lucide="play-circle"></i> Introduction</a></li>
+          <li><a href="#products"><i data-lucide="shopping-cart"></i> Liste des Pièces</a></li>
+          <li><a href="#step1"><i data-lucide="wrench"></i> Phase 1 : Montage</a></li>
+          <li><a href="#step2"><i data-lucide="cpu"></i> Phase 2 : Code</a></li>
+          <li><a href="#step3"><i data-lucide="wifi"></i> Phase 3 : Wi-Fi</a></li>
+          <li><a href="#step4"><i data-lucide="package"></i> Phase 4 : Boîtier</a></li>
+        </ul>
+      </nav>
+      <div
+        style="margin-top: auto; padding: 1rem; background: var(--glass); border-radius: 12px; font-size: 0.8rem; color: var(--text-muted);">
+        Made with ❤️ for Papa
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div class="header-breadcrumb">Guide de Montage • <span id="current-step">Introduction</span></div>
+        <div class="header-actions">
+          <!-- Moon icon removed as requested -->
+        </div>
+        <div id="progress" class="progress-bar"></div>
+      </header>
+
+      <section id="intro" class="hero">
+        <h1>Potager Connecté</h1>
+        <p>Bienvenue dans l'aventure ! Ce guide t'accompagnera pas à pas pour construire ta station météo intelligente.
+          Prends ton temps, un café, et c'est parti !</p>
+        <div class="code-container" style="max-width: 400px; margin-top: 2rem;">
+          <div class="code-header"><span>Terminal</span></div>
+          <pre class="language-bash"
+            style="padding: 1rem;"><code class="language-bash">$ install gardening-os v1.0.4</code></pre>
+        </div>
+        <p
+          style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: -1.2rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center; max-width: 400px;">
+          <i data-lucide="info" style="width: 14px; height: 14px; color: var(--primary);"></i>
+          C'est une blague de geek, Papa ! Pas besoin de taper ça. 😉
+        </p>
+      </section>
+
+      <!-- Dependency List (Products) -->
+      <section id="products" class="section">
+        <span class="section-tag">PRE-REQUISITES (Dependencies)</span>
+        <h2>📦 Hardware Components</h2>
+        <div class="md-content">
+          <p
+            style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem;">
+            // Les objets suivants doivent être présents à la racine de votre bureau avant d'initier le montage.
+          </p>
+
+          <div class="sdk-grid">
+            <!-- Item 1 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">TTGO_ESP32_CORE.h</div>
+              <img src="./assets/61XbB38i7YL._AC_SL1105_.jpg" class="sdk-card-img" alt="ESP32">
+              <div class="sdk-card-content">
+                <h4>Le Cerveau (MCU)</h4>
+                <ul class="property-list">
+                  <li><span>type:</span> "ESP32-WROOM-32"</li>
+                  <li><span>screen:</span> "OLED 0.96 inch"</li>
+                  <li><span>bluetooth:</span> true</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">GROUND_SENSOR.js</div>
+              <img src="./assets/71SDgzy+GeL._AC_SL1500_.jpg" class="sdk-card-img" alt="Hygromètre">
+              <div class="sdk-card-content">
+                <h4>Fourche Humidité</h4>
+                <ul class="property-list">
+                  <li><span>protocol:</span> "Analog/Digital"</li>
+                  <li><span>coating:</span> "Anti-corrosion"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">ATMOSPHERE_API.py</div>
+              <img src="./assets/71BrSN7hQ4L._SL1500_.jpg" class="sdk-card-img" alt="DHT22">
+              <div class="sdk-card-content">
+                <h4>Capteur Air (DHT22)</h4>
+                <ul class="property-list">
+                  <li><span>accuracy:</span> "High Precision"</li>
+                  <li><span>measures:</span> ["Temp", "Hum"]</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">POWER_MATRIX.iso</div>
+              <img src="./assets/81kBh9g7WnL._AC_SL1500_.jpg" class="sdk-card-img" alt="Solaire">
+              <div class="sdk-card-content">
+                <h4>Panneau Solaire</h4>
+                <ul class="property-list">
+                  <li><span>output:</span> "6W Peak"</li>
+                  <li><span>port:</span> "USB Type-C"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">STORAGE_CASE.bin</div>
+              <img src="./assets/61wvouWzEAL._SL1500_.jpg" class="sdk-card-img" alt="Boîtier">
+              <div class="sdk-card-content">
+                <h4>Boîtier Étanche</h4>
+                <ul class="property-list">
+                  <li><span>protection:</span> "IP65 Waterproof"</li>
+                  <li><span>material:</span> "ABS Plastic"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">TEMP_PROBE_V2.cpp</div>
+              <img src="./assets/6161lAV5xlL._SL1500_.jpg" class="sdk-card-img" alt="Sonde Inox">
+              <div class="sdk-card-content">
+                <h4>Sonde Temp Terre</h4>
+                <ul class="property-list">
+                  <li><span>material:</span> "Inox 304"</li>
+                  <li><span>cable:</span> "1 meter"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">PROTO_BOARD.json</div>
+              <img src="./assets/81aehZAwfAL._SL1500_.jpg" class="sdk-card-img" alt="Breadboard">
+              <div class="sdk-card-content">
+                <h4>Plaque & Fils</h4>
+                <ul class="property-list">
+                  <li><span>grid:</span> "830 points"</li>
+                  <li><span>cables:</span> "Dupont Kit"</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="sdk-card">
+              <div class="sdk-card-header">ENERGY_CELL.vault</div>
+              <img src="./assets/61nAO8QD+yL._AC_SL1500_.jpg" class="sdk-card-img" alt="Pile">
+              <div class="sdk-card-content">
+                <h4>Grosse Pile Luxe</h4>
+                <ul class="property-list">
+                  <li><span>capacity:</span> "3000 mAh"</li>
+                  <li><span>voltage:</span> "3.7V Li-ion"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="get-started" class="hacker-terminal">
+        <div class="terminal-header">
+          <span>SETUP_WIZARD.EXE</span>
+          <span>v1.0.4-LTS</span>
+        </div>
+        <div class="terminal-content">
+
+          <!-- Step 1 -->
+          <section id="step1" class="section">
+            <span class="section-tag">Phase 1</span>
+            <h2>🛠️ Le Puzzle sur le bureau</h2>
+
+            <div class="rule-card">
+              <p>⚠️ <strong>RÈGLE D'OR :</strong> Ne branche Surtout PAS la batterie ni le câble USB tant que le
+                monsieur sur le dessin n'a pas dit que c'était fini !</p>
+            </div>
+
+            <div class="md-content">
+              <h3>📦 Inventaire des pièces</h3>
+              <p>Vide ton carton et pose ces éléments sur ton bureau :</p>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="box"></i> Aperçu du matériel</div>
+                <div
+                  style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                  <div class="item-preview">
+                    <img src="./assets/81aehZAwfAL._SL1500_.jpg" alt="Plaque"
+                      style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <p style="font-size: 0.7rem; text-align: center; margin-top: 0.3rem;"><span class="component-pill"
+                        style="--pill-img: url('./assets/81aehZAwfAL._SL1500_.jpg')">[Plaque]</span></p>
+                  </div>
+                  <div class="item-preview">
+                    <img src="./assets/61XbB38i7YL._AC_SL1105_.jpg" alt="Cerveau"
+                      style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <p style="font-size: 0.7rem; text-align: center; margin-top: 0.3rem;"><span class="component-pill"
+                        style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">[Cerveau]</span></p>
+                  </div>
+                  <div class="item-preview">
+                    <img src="./assets/71BrSN7hQ4L._SL1500_.jpg" alt="Air"
+                      style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <p style="font-size: 0.7rem; text-align: center; margin-top: 0.3rem;"><span class="component-pill"
+                        style="--pill-img: url('./assets/71BrSN7hQ4L._SL1500_.jpg')">[Capteur A]</span></p>
+                  </div>
+                  <div class="item-preview">
+                    <img src="./assets/6161lAV5xlL._SL1500_.jpg" alt="Terre"
+                      style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <p style="font-size: 0.7rem; text-align: center; margin-top: 0.3rem;"><span class="component-pill"
+                        style="--pill-img: url('./assets/6161lAV5xlL._SL1500_.jpg')">[Capteur B]</span></p>
+                  </div>
+                  <div class="item-preview">
+                    <img src="./assets/71SDgzy+GeL._AC_SL1500_.jpg" alt="Humidité"
+                      style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <p style="font-size: 0.7rem; text-align: center; margin-top: 0.3rem;"><span class="component-pill"
+                        style="--pill-img: url('./assets/71SDgzy+GeL._AC_SL1500_.jpg')">[Capteur C]</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="layers"></i> ACTION 1 : Poser les fondations</div>
+                <ol>
+                  <li>Prends la <span class="component-pill"
+                      style="--pill-img: url('./assets/81aehZAwfAL._SL1500_.jpg')"><strong>[Plaque]</strong></span>
+                    blanche et pose-la bien à plat devant toi.</li>
+                  <li>Prends le <span class="component-pill"
+                      style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')"><strong>[Cerveau]</strong></span>
+                    (carte noire). Regarde en dessous : il y a des petites
+                    pointes métalliques.</li>
+                  <li>Aligne ces pointes pour que la carte soit posée <strong>pile au centre de la plaque
+                      blanche</strong>, à cheval sur le petit fossé central.</li>
+                  <li><strong>Appuie fermement (mais doucement)</strong> avec tes deux pouces pour enfoncer la carte
+                    dans les trous de la plaque.</li>
+                </ol>
+                <div class="action-result-img"
+                  style="margin-top: 1.5rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); height: 350px;">
+                  <img src="assets/montage/Gemini_Generated_Image_mtmd0hmtmd0hmtmd.png" alt="Résultat Action 1"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="scissors"></i> ACTION 2 : Préparer les fils (L'astuce du chef)
+                </div>
+                <ol>
+                  <li>Prends le sachet de fils de couleur. Ils sont tous collés ensemble en un grand ruban plat
+                    multicolore.</li>
+                  <li><strong>Détache-les !</strong> Tire dessus pour en séparer un <span class="color-red">ROUGE</span>
+                    et un <span class="color-blue">BLEU</span> (ou noir).</li>
+                  <li><strong>Le bon embout :</strong> Il te faut des fils avec une <strong>petite pointe en métal qui
+                      dépasse à chaque extrémité</strong> (mâle-mâle).</li>
+                </ol>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="zap"></i> ACTION 3 : Distribuer l'énergie (La multiprise)
+                </div>
+                <p><em>On va envoyer le courant de la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span> vers les grandes lignes sur les bords de la
+                    plaque.</em></p>
+                <ol>
+                  <li><span class="wire-badge"><span class="dot dot-red"></span> Fil <span
+                        class="color-red">ROUGE</span></span> :
+                    Trouve l'inscription <strong>VCC</strong> sur la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span>. Plante une pointe du fil <span class="color-red">rouge</span> sur la
+                    même rangée horizontale, et l'autre pointe sur n'importe quel trou de la <strong>longue ligne <span class="color-red">ROUGE</span>
+                      (+)</strong> du bord.
+                  </li>
+                  <li><span class="wire-badge"><span class="dot dot-blue"></span> Fil <span
+                        class="color-blue">BLEU</span></span> :
+                    Trouve l'inscription <strong>GND</strong> sur la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span>. Plante une pointe du fil <span class="color-blue">bleu</span> sur la
+                    même rangée, et l'autre pointe sur la <strong>longue ligne <span class="color-blue">BLEUE</span> (-)</strong> du bord.
+                  </li>
+                </ol>
+                <div class="info-note"
+                  style="margin-top: 1.5rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.08); border-radius: 12px; border-left: 4px solid var(--primary); font-size: 0.95rem; line-height: 1.5;">
+                  <span style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                    <i data-lucide="info" style="color: var(--primary); flex-shrink: 0; width: 20px; height: 20px;"></i>
+                    <span>
+                      <strong>LE TRUC MAGIQUE :</strong> Grâce à ces deux petits fils, <strong>toute la colonne <span class="color-red">ROUGE</span>
+                        (+)</strong> et <strong>toute la colonne <span class="color-blue">BLEUE</span> (-)</strong> de la plaque seront
+                      sous tension ! C'est comme si tu avais branché une multiprise géante sur les côtés de ton
+                      bureau.
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="action-item" style="border-left: 4px solid var(--primary);">
+                <div class="action-title"><i data-lucide="settings"></i> MINI-ÉTAPE SPÉCIALE : Préparer la Sonde Inox
+                </div>
+                <p><em>Relie la sonde à son adaptateur avant de la brancher sur la plaque.</em></p>
+                <ol>
+                  <li>Prends le <strong>petit carré noir</strong> avec le bloc vert (l'adaptateur).</li>
+                  <li>Dévisse légèrement les 3 petites vis sur le dessus du bloc vert.</li>
+                  <li>Insère les 3 fils nus de la <span class="component-pill"
+                      style="--pill-img: url('./assets/6161lAV5xlL._SL1500_.jpg')"><strong>Sonde Inox</strong></span>
+                    dans les trous du bloc vert dans cet ordre
+                    :
+                    <ul
+                      style="margin-top: 0.5rem; margin-bottom: 0.5rem; border-left: 2px solid var(--glass-border); padding-left: 1rem;">
+                      <li><span class="wire-badge"><span class="dot dot-yellow"></span> Fil <span
+                            class="color-yellow">JAUNE</span></span> ➔ <strong>DAT</strong> (Data)</li>
+                      <li><span class="wire-badge"><span class="dot dot-red"></span> Fil <span
+                            class="color-red">ROUGE</span></span> ➔ <strong>VCC</strong> (+)</li>
+                      <li><span class="wire-badge"><span class="dot dot-black"></span> Fil <span
+                            class="color-black">NOIR</span></span> ➔ <strong>GND</strong> (-)</li>
+                    </ul>
+                  </li>
+                  <li>Revisse fermement et utilise 3 câbles <span class="text-muted"
+                      style="font-size: 0.8rem;">(Femelle-Mâle)</span> pour relier l'adaptateur à la plaque.</li>
+                </ol>
+                <div class="action-result-img"
+                  style="margin-top: 1.5rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                  <img src="assets/montage/Gemini_Generated_Image_bzgf27bzgf27bzgf.png" alt="Résultat Sonde Inox"
+                    style="width: 100%; height: auto; max-height: 500px; object-fit: contain; background: white; display: block;">
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="cable"></i> ACTIONS 4, 5 & 6 : Branchements des Capteurs</div>
+                <p><em>C'est le moment de relier nos trois espions à la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span>. Chaque capteur a besoin de courant
+                    pour fonctionner et d'un tuyau pour envoyer ses données.</em></p>
+
+                <div style="margin-bottom: 2rem;">
+                  <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1rem;">☁️ Action 4 : Le Capteur
+                    d'Air
+                    (Température & Humidité)</h4>
+                  <ol>
+                    <li><span class="wire-badge"><span class="dot dot-red"></span> Fil <span
+                          class="color-red">ROUGE</span></span> : Branche le <strong>VCC</strong> sur n'importe quel
+                      trou
+                      de la <strong>longue ligne <span class="color-red">ROUGE</span> (+)</strong> sur le bord de la plaque.</li>
+                    <li><span class="wire-badge"><span class="dot dot-blue"></span> Fil <span
+                          class="color-blue">BLEU</span></span> : Branche le <strong>GND</strong> sur n'importe quel
+                      trou
+                      de la <strong>longue ligne <span class="color-blue">BLEUE</span> (-)</strong> du bord.</li>
+                    <li><span class="wire-badge"><span class="dot dot-yellow"></span> Fil <span
+                          class="color-yellow">JAUNE</span></span> : Branche le <strong>DATA</strong> sur la rangée de
+                      la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span> où tu vois l'inscription <strong>"14"</strong> (ou P14).</li>
+                  </ol>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                  <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1rem;">🌡️ Action 5 : La Sonde de
+                    Terre (Le tube Inox)</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">(Utilise les 3 fils qui
+                    sortent de l'adaptateur noir que tu as préparé juste avant)</p>
+                  <ol>
+                    <li><span class="wire-badge"><span class="dot dot-red"></span> Fil <span
+                          class="color-red">ROUGE</span></span> : Branche le <strong>VCC</strong> sur la <strong>ligne
+                        <span class="color-red">ROUGE</span> (+)</strong> du bord.</li>
+                    <li><span class="wire-badge"><span class="dot dot-black"></span> Fil <span
+                          class="color-black">NOIR</span></span> : Branche le <strong>GND</strong> sur la <strong>ligne
+                        <span class="color-blue">BLEUE</span> (-)</strong> du bord.</li>
+                    <li><span class="wire-badge"><span class="dot dot-yellow"></span> Fil <span
+                          class="color-yellow">JAUNE</span></span> : Branche le <strong>DAT</strong> (Data) sur la rangée
+                      de la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span> marquée <strong>"4"</strong> (ou P4).</li>
+                  </ol>
+                </div>
+
+                <div>
+                  <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1rem;">💧 Action 6 : L'Humidité du
+                    Sol (La fourche noire)</h4>
+                  <ol>
+                    <li><span class="wire-badge"><span class="dot dot-red"></span> Fil <span
+                          class="color-red">ROUGE</span></span> : Branche le <strong>VCC</strong> sur la <strong>ligne
+                        <span class="color-red">ROUGE</span> (+)</strong> du bord.</li>
+                    <li><span class="wire-badge"><span class="dot dot-blue"></span> Fil <span
+                          class="color-blue">BLEU</span></span> : Branche le <strong>GND</strong> sur la <strong>ligne
+                        <span class="color-blue">BLEUE</span> (-)</strong> du bord.</li>
+                    <li><span class="wire-badge"><span class="dot dot-purple"></span> Fil <span
+                          class="color-purple">VIOLET</span></span> : Branche le <strong>AOUT</strong> sur la rangée
+                      marquée <strong>"34"</strong> (ou P34) sur la <span class="component-pill" style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span>.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="rule-card" style="background: rgba(16, 185, 129, 0.1); border-color: var(--primary);">
+                <p>✅ <strong>FIN DE L'ÉTAPE 1 !</strong> Vérifie que tous tes fils <span class="color-red">rouges</span> sont sur la ligne (+) et les
+                  <span class="color-blue">bleus</span> sur la ligne (-). C'est le cas ? Tu as gagné le droit de brancher le câble USB !</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 2 -->
+          <section id="step2" class="section">
+            <span class="section-tag">Phase 2</span>
+            <h2>💻 L'Ordinateur (La Magie)</h2>
+
+            <div class="rule-card">
+              <p>⚠️ <strong>RÈGLE D'OR :</strong> L'ordinateur va parfois afficher des lignes de texte <span class="color-orange">orange</span> ou <span class="color-red">rouge</span>
+                pendant qu'il travaille. Pas de panique, c'est normal, il ne va pas exploser ! Laisse-le finir.</p>
+            </div>
+
+            <div class="md-content">
+              <h3>📦 Inventaire des pièces</h3>
+              <ul>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/montage/Gemini_Generated_Image_mtmd0hmtmd0hmtmd.png')"><strong>[Le
+                      Puzzle]</strong></span> : Le montage que tu viens de terminer avec succès à l'Étape 1.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/cable.png')"><strong>[Le Câble]</strong></span> :
+                  Un câble USB adapté à ta carte noire (Micro-USB ou USB-C).</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/laptop.png')"><strong>[L'Ordi]</strong></span>
+                  : Ton ordinateur allumé avec Arduino IDE.</li>
+              </ul>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="layers"></i> ÉXPECTATIONS : Inventaire</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;">
+                  <img src="assets/montage/Gemini_Generated_Image_mtmd0hmtmd0hmtmd.png" alt="Puzzle">
+                  <img src="assets/icons/cable.png" alt="Câble">
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="usb"></i> ACTION 1 : Le Branchement</div>
+                <ol>
+                  <li>Prends <span class="component-pill"
+                      style="--pill-img: url('assets/icons/cable.png')"><strong>[Le Câble]</strong></span>
+                    USB.</li>
+                  <li>Branche le petit bout dans la prise de la carte noire <span class="component-pill"
+                      style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')"><strong>[Cerveau]</strong></span>.
+                  </li>
+                  <li>Branche le gros bout dans un port USB de ton <span class="component-pill"
+                      style="--pill-img: url('assets/icons/laptop.png')"><strong>[Ordi]</strong></span>.
+                  </li>
+                  <li><em>Bip !</em> Une petite lumière devrait s'allumer sur la carte noire. C'est en vie !</li>
+                </ol>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="book-open"></i> ACTION 2 : Bibliothèques</div>
+                <p>Dans Arduino IDE, va dans <strong>Outils > Gérer les bibliothèques</strong> et installe :</p>
+                <ul>
+                  <li><code>DHT sensor library</code> (par Adafruit)</li>
+                  <li><code>OneWire</code> (par Paul Stoffregen)</li>
+                  <li><code>DallasTemperature</code> (par Miles Burton)</li>
+                </ul>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="code-2"></i> ACTION 3 : Le Code de Test</div>
+                <p>Efface tout et colle ce code pour vérifier que tout fonctionne :</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span>test_station.ino</span>
+                    <button onclick="copyCode('code-test')">Copier</button>
+                  </div>
+                  <pre class="language-arduino"><code id="code-test" class="language-arduino">#include &lt;DHT.h&gt;
+#include &lt;OneWire.h&gt;
+#include &lt;DallasTemperature.h&gt;
+
+DHT capteurAir(14, DHT22);
+OneWire filSondeTerre(4);
+DallasTemperature sondeTerre(&filSondeTerre);
+
+void setup() {
+  Serial.begin(115200);
+  capteurAir.begin();
+  sondeTerre.begin();
+  Serial.println("Bonjour ! La station meteo demarre...");
+}
+
+void loop() {
+  int humiditeTerre = analogRead(34);
+  sondeTerre.requestTemperatures(); 
+  float temperatureTerre = sondeTerre.getTempCByIndex(0);
+  float temperatureAir = capteurAir.readTemperature();
+
+  Serial.println("--- NOUVELLE MESURE ---");
+  Serial.print("Terre (Humidite brute) : "); Serial.println(humiditeTerre);
+  Serial.print("Terre (Temperature) : "); Serial.print(temperatureTerre); Serial.println(" C");
+  Serial.print("Air (Temperature) : "); Serial.print(temperatureAir); Serial.println(" C");
+  
+  delay(5000); 
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="target"></i> ACTION 4 : Cibler la carte</div>
+                <p>Il faut dire à l'ordinateur à qui il doit envoyer ce texte.</p>
+                <ol>
+                  <li>Va dans le menu <strong>Outils > Carte</strong>. Choisis <strong>ESP32 Dev Module</strong>.</li>
+                  <li>Va dans le menu <strong>Outils > Port</strong>. Clique sur le port qui s'affiche (souvent "COM3"
+                    ou "USB Serial").</li>
+                </ol>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="send"></i> ACTION 5 : L'Envoi</div>
+                <ol>
+                  <li>Clique sur le bouton rond avec une <strong>Flèche vers la droite (➔)</strong> (Téléverser).</li>
+                  <li>⏳ <strong>PATIENTE.</strong> Attends de lire le message "Téléversement terminé" en bas.</li>
+                </ol>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="search"></i> ACTION 6 : La Récompense !</div>
+                <ol>
+                  <li>Clique sur l'icône <strong>Loupe</strong> (Moniteur Série) en haut à droite.</li>
+                  <li>Vérifie que le menu en bas à droite est sur <strong>115200 baud</strong>.</li>
+                  <li>Regarde l'écran : <strong>La carte t'affiche la température en direct !</strong></li>
+                </ol>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Step 3 -->
+          <section id="step3" class="section">
+            <span class="section-tag">Phase 3</span>
+            <h2>📡 Le Wi-Fi (Le téléphone)</h2>
+
+            <div class="md-content">
+              <h3>📦 Inventaire pour cette phase</h3>
+              <ul>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/montage/Gemini_Generated_Image_mtmd0hmtmd0hmtmd.png')"><strong>[Le
+                      Puzzle]</strong></span> : Ton circuit programmé et branché.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/smartphone.png')"><strong>[Smartphone]</strong></span>
+                  : Ton téléphone pour tester l'affichage mobile.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/wifi.png')"><strong>[Wi-Fi]</strong></span>
+                  : Tes identifiants (Nom & Mot de passe).</li>
+              </ul>
+              <p><em>Pour voir les données sur ton téléphone, on va transformer ta carte en un mini-site web accessible
+                  depuis le <span class="component-pill"
+                    style="--pill-img: url('assets/icons/wifi.png')">Wi-Fi</span> de la
+                  maison.</em></p>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="wifi"></i> ACTION 1 : Le Code Wi-Fi</div>
+                <p>1. Sur ton ordinateur (logiciel Arduino), efface le code précédent.</p>
+                <p>2. Copie-colle le nouveau code ci-dessous.</p>
+                <p>3. <strong>⚠️ L'ÉTAPE CRUCIALE :</strong> Tout en haut du code, remplace <code>"NOM_DE_TA_BOX"</code>
+                  et <code>"MOT_DE_PASSE_BOX"</code> par le vrai nom et le mot de passe de ton Wi-Fi. (Garde bien les
+                  guillemets autour !).</p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <span>web_station.ino</span>
+                    <button onclick="copyCode('code-web')">Copier</button>
+                  </div>
+                  <pre class="language-arduino"><code id="code-web" class="language-arduino">#include &lt;WiFi.h&gt;
+#include &lt;WebServer.h&gt;
+#include &lt;DHT.h&gt;
+#include &lt;OneWire.h&gt;
+#include &lt;DallasTemperature.h&gt;
+
+// --- 📡 TES IDENTIFIANTS WI-FI (À MODIFIER !) ---
+const char* ssid = "NOM_DE_TA_BOX";
+const char* password = "MOT_DE_PASSE_BOX";
+
+// --- 🔌 DÉCLARATION DES CAPTEURS ---
+DHT capteurAir(14, DHT22);                     // Le capteur blanc sur le trou 14
+OneWire filSondeTerre(4);                      // La sonde en métal sur le trou 4
+DallasTemperature sondeTerre(&amp;filSondeTerre);
+
+WebServer serveur(80);
+
+void setup() {
+  Serial.begin(115200);
+  capteurAir.begin();
+  sondeTerre.begin();
+
+  // 1. Connexion au Wi-Fi de la maison
+  Serial.println("\n🌱 Allumage du système...");
+  Serial.print("Connexion au Wi-Fi ");
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500); 
+    Serial.print(".");
+  }
+  
+  // 2. Affichage de l'adresse magique sur l'ordinateur
+  Serial.println("");
+  Serial.println("✅ Wi-Fi Connecté !");
+  Serial.print("📱 Tape cette adresse dans ton navigateur : ");
+  Serial.println(WiFi.localIP());
+
+  // 3. Création du Mini-Site Web (Le Tableau de bord)
+  serveur.on("/", []() {
+    
+    // --- LECTURE DES 4 VALEURS ---
+    int humiditeTerre = analogRead(34);             // 1. Humidité du sol
+    
+    sondeTerre.requestTemperatures(); 
+    float tempTerre = sondeTerre.getTempCByIndex(0); // 2. Température du sol
+    
+    float tempAir = capteurAir.readTemperature();    // 3. Température de l'air
+    float humiditeAir = capteurAir.readHumidity();   // 4. Humidité de l'air
+
+    // --- FABRICATION DE LA PAGE WEB (Avec un peu de design CSS) ---
+    String pageWeb = "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=\"UTF-8\"&gt;";
+    pageWeb += "&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;";
+    pageWeb += "&lt;title&gt;Potager OS v1.0&lt;/title&gt;";
+    // Un peu de style pour faire joli sur le téléphone
+    pageWeb += "&lt;style&gt;";
+    pageWeb += "body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; text-align:center; ";
+    pageWeb += "background-color:#e8f5e9; color:#2e7d32; margin-top:30px;} ";
+    pageWeb += ".carte{background:white; padding:20px; border-radius:15px; ";
+    pageWeb += "box-shadow:0 4px 8px rgba(0,0,0,0.1); display:inline-block; ";
+    pageWeb += "margin:15px; width:280px; text-align:left;} ";
+    pageWeb += "h1{color:#1b5e20;} h2{border-bottom:2px solid #a5d6a7; ";
+    pageWeb += "padding-bottom:5px; margin-top:0;} ";
+    pageWeb += "&lt;/style&gt;";
+    pageWeb += "&lt;/head&gt;&lt;body&gt;";
+    
+    pageWeb += "&lt;h1&gt;🍅 Potager OS v1.0 ☀️&lt;/h1&gt;";
+    
+    // Bloc 1 : La Terre
+    pageWeb += "&lt;div class=\"carte\"&gt;&lt;h2&gt;🌱 Dans la Terre&lt;/h2&gt;";
+    pageWeb += "&lt;p&gt;💧 Humidité (brute) : &lt;b&gt;" + String(humiditeTerre) + "&lt;/b&gt;&lt;/p&gt;";
+    pageWeb += "&lt;p&gt;🌡️ Température : &lt;b&gt;" + String(tempTerre) + " &amp;deg;C&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;";
+    
+    // Bloc 2 : L'Air
+    pageWeb += "&lt;div class=\"carte\"&gt;&lt;h2&gt;☁️ Dans l'Air&lt;/h2&gt;";
+    pageWeb += "&lt;p&gt;🌡️ Température : &lt;b&gt;" + String(tempAir) + " &amp;deg;C&lt;/b&gt;&lt;/p&gt;";
+    pageWeb += "&lt;p&gt;💧 Humidité : &lt;b&gt;" + String(humiditeAir) + " %&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;";
+    
+    pageWeb += "&lt;/body&gt;&lt;/html&gt;";
+    
+    // On envoie la page au téléphone
+    serveur.send(200, "text/html", pageWeb);
+  });
+
+  // On lance le serveur web
+  serveur.begin();
+}
+
+void loop() {
+  // La carte écoute en permanence si un téléphone demande à voir la page
+  serveur.handleClient(); 
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="smartphone"></i> ACTION 2 : L'Affichage sur le Canapé</div>
+                <p>1. Clique sur le bouton <strong>Téléverser</strong> (la flèche vers la droite) pour envoyer ce
+                  nouveau code dans la carte.</p>
+                <p>2. Ouvre la <strong>Loupe</strong> (Moniteur Série) en haut à droite.</p>
+                <p>3. Attends quelques secondes. L'ordinateur va afficher un message du type :
+                  <code>✅ Connecté ! Tape cette adresse dans ton téléphone : 192.168.1.XX</code>
+                </p>
+                <p>4. <strong>Prends ton <span class="component-pill"
+                      style="--pill-img: url('assets/icons/smartphone.png')">smartphone</span></strong>
+                  (assure-toi qu'il est connecté au même Wi-Fi que la
+                  maison).</p>
+                <p>5. Ouvre ton navigateur Internet (Safari, Chrome...) et tape exactement les 4 nombres séparés par des
+                  points dans la barre d'adresse tout en haut.</p>
+                <p>6. <strong>Magie !</strong> Une page blanche apparaît avec le titre "Potager OS v1.0" et tes relevés
+                  en direct !</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 4 -->
+          <section id="step4" class="section">
+            <span class="section-tag">Phase Finale</span>
+            <h2>🏡 La Maison Étanche et le Jardin</h2>
+
+            <div class="rule-card">
+              <p>⚠️ <strong>RÈGLE D'OR :</strong> C'est le moment de faire très attention au sens de la pile (le + et le
+                -). Si on la met à l'envers, la carte noire fera de la fumée, et ce n'est pas bon signe !</p>
+            </div>
+
+            <div class="md-content">
+              <h3>📦 Inventaire pour cette étape</h3>
+              <ul>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/montage/Gemini_Generated_Image_mtmd0hmtmd0hmtmd.png')"><strong>[Le
+                      Puzzle]</strong></span> : Ton circuit qui fonctionne sur le bureau.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')"><strong>[La Boîte]</strong></span> : Le
+                  grand boîtier de 20 cm avec son couvercle transparent.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/gland.png')"><strong>[Les
+                      Embouts]</strong></span> : Les presse-étoupes blancs.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('./assets/61nAO8QD+yL._AC_SL1500_.jpg')"><strong>[L'Énergie]</strong></span>
+                  : La grosse pile JESSPOW et le panneau solaire NIVIAN.</li>
+                <li><span class="component-pill"
+                    style="--pill-img: url('assets/icons/tools.png')"><strong>[Les
+                      Outils]</strong></span> : Une perceuse et un tournevis.</li>
+              </ul>
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="layers"></i> ÉXPECTATIONS : Inventaire</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;">
+                  <img src="./assets/61wvouWzEAL._SL1500_.jpg" alt="Boîte">
+                  <img src="./assets/61nAO8QD+yL._AC_SL1500_.jpg" alt="Pile">
+                  <img src="./assets/81kBh9g7WnL._AC_SL1500_.jpg" alt="Solaire">
+                </div>
+              </div>
+
+              <div class="action-item">
+                <div class="action-title"><i data-lucide="hammer"></i> ACTION 1 : Faire les trous (Le Bricolage)</div>
+                <p><em>On va préparer la boîte pour laisser entrer les fils, mais pas la pluie.</em></p>
+                <ol>
+                  <li>Prends <span class="component-pill"
+                      style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')"><strong>[La Boîte]</strong></span> et
+                    choisis le côté qui pointera vers le sol une fois installée
+                    dehors.</li>
+                  <li>Perce 3 ou 4 trous <strong>uniquement sur ce côté du dessous</strong> (jamais sur le dessus, sinon
+                    l'eau va s'infiltrer).</li>
+                  <li>Visse tes <span class="component-pill"
+                      style="--pill-img: url('assets/icons/gland.png')"><strong>[Embouts]</strong></span>
+                    blancs dans les trous. Dévisse le petit chapeau de chaque
+                    embout et garde-le sous la main.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="action-item">
+              <div class="action-title"><i data-lucide="package-open"></i> ACTION 2 : Le Déménagement</div>
+              <p><em>Il faut rentrer le circuit dans la boîte.</em></p>
+              <ol>
+                <li>Débranche le câble USB de l'ordinateur.</li>
+                <li>Débranche <strong>uniquement</strong> les fils des capteurs qui vont aller dehors : le tube en
+                  métal (<span class="component-pill" style="--pill-img: url('./assets/6161lAV5xlL._SL1500_.jpg')">Sonde
+                    Inox</span>) et la <span class="component-pill" style="--pill-img: url('./assets/71SDgzy+GeL._AC_SL1500_.jpg')"><span class="color-black">fourche noire</span></span> (Humidité). Laisse le capteur <span class="color-white">blanc</span> (Air) branché, il reste à
+                  l'intérieur de <span class="component-pill" style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')">la boîte</span>.</li>
+                <li>Prends ta <span class="component-pill"
+                    style="--pill-img: url('./assets/81aehZAwfAL._SL1500_.jpg')"><span class="color-white">plaque blanche</span></span>, décolle
+                  l'autocollant en dessous, et <strong>colle-la bien au centre, au
+                    fond de <span class="component-pill" style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')">la boîte</span></strong>.</li>
+                <li><strong>LE PIÈGE :</strong> Prends les fils de la <span class="component-pill"
+                    style="--pill-img: url('./assets/6161lAV5xlL._SL1500_.jpg')">Sonde Inox</span> et de la <span class="component-pill" style="--pill-img: url('./assets/71SDgzy+GeL._AC_SL1500_.jpg')"><span class="color-black">fourche noire</span></span>. Passe-les à
+                  l'intérieur des petits chapeaux des <span class="component-pill" style="--pill-img: url('assets/icons/gland.png')">embouts blancs</span>, puis <strong>glisse-les à travers les trous de
+                    <span class="component-pill" style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')">la boîte</span> (de l'extérieur vers l'intérieur)</strong>.</li>
+                <li>Fais pareil avec le câble USB de ton <span class="component-pill"
+                    style="--pill-img: url('./assets/81kBh9g7WnL._AC_SL1500_.jpg')">panneau solaire</span> : passe-le de
+                  l'extérieur vers l'intérieur.
+                </li>
+                <li>Maintenant que les fils sont dans la boîte, tu peux les rebrancher sur la <span
+                    class="component-pill" style="--pill-img: url('./assets/81aehZAwfAL._SL1500_.jpg')"><span class="color-white">plaque
+                    blanche</span></span>
+                  exactement comme à l'Étape 1.</li>
+              </ol>
+            </div>
+
+            <div class="action-item">
+              <div class="action-title"><i data-lucide="lock"></i> ACTION 3 : Sceller les écoutilles !</div>
+              <ol>
+                <li>Tire doucement sur les fils depuis l'extérieur pour ne pas avoir un gros paquet de nouilles à
+                  l'intérieur de <span class="component-pill" style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')">la boîte</span>.</li>
+                <li>Visse et <strong>serre très fort</strong> les chapeaux des <span class="component-pill" style="--pill-img: url('assets/icons/gland.png')">embouts blancs</span>. Le caoutchouc va
+                  écraser les fils : l'eau ne pourra plus jamais passer !</li>
+              </ol>
+            </div>
+
+            <div class="action-item">
+              <div class="action-title"><i data-lucide="zap"></i> ACTION 4 : Donner vie au monstre (L'Énergie)</div>
+              <ol>
+                <li>Prends la grosse <span class="component-pill"
+                    style="--pill-img: url('./assets/61nAO8QD+yL._AC_SL1500_.jpg')">pile JESSPOW</span>. Regarde au dos
+                  de la <span class="component-pill"
+                    style="--pill-img: url('./assets/61XbB38i7YL._AC_SL1105_.jpg')">carte noire</span> : il y a un
+                  support avec un <strong>(+)</strong> et un <strong>(-)</strong> gravés dans le plastique.</li>
+                <li>Insère la pile dans le bon sens. L'écran devrait s'allumer tout de suite !</li>
+                <li>Prends le bout du câble du <strong>panneau solaire</strong> (qui est maintenant dans la boîte) et
+                  branche-le sur la prise USB de la carte noire.</li>
+                <li>Pose le couvercle transparent sur la boîte, et serre fermement les 4 vis aux coins.</li>
+              </ol>
+            </div>
+
+            <div class="action-item">
+              <div class="action-title"><i data-lucide="sun"></i> ACTION 5 : L'Installation au Potager</div>
+              <ol>
+                <li><strong>Fixer le boîtier :</strong> Accroche <span class="component-pill" style="--pill-img: url('./assets/61wvouWzEAL._SL1500_.jpg')">ta boîte</span> sur un piquet en bois ou sur le bord de ton
+                  bac à légumes.</li>
+                <li><strong>Le Soleil :</strong> Fixe le <span class="component-pill" style="--pill-img: url('./assets/81kBh9g7WnL._AC_SL1500_.jpg')">panneau solaire</span> juste au-dessus. Règle-le pour qu'il regarde
+                  <strong>plein Sud</strong>, incliné vers le ciel à environ 30 ou 35 degrés.
+                </li>
+                <li><strong>Plonger la Sonde Inox :</strong> Enfonce le <span class="component-pill" style="--pill-img: url('./assets/6161lAV5xlL._SL1500_.jpg')">tube en métal</span> profondément dans la terre
+                  (environ 10 à 15 cm).</li>
+                <li><strong>Planter la Fourche Noire :</strong> Plante <span class="component-pill" style="--pill-img: url('./assets/71SDgzy+GeL._AC_SL1500_.jpg')">le capteur d'humidité (<span class="color-black">fourche noire</span>)</span> dans la terre.
+                  **ATTENTION :** N'enterre que la grande <span class="color-black">partie noire</span>. La petite partie en haut (où les fils sont
+                  soudés) n'aime pas l'eau et doit rester à l'air libre !</li>
+                <li>Bravo ! Tu es maintenant un <strong>Hacker Agricole</strong> ! 🍅</li>
+              </ol>
+            </div>
+        </div>
+        </section>
+
+      </div> <!-- End terminal content -->
+  </div> <!-- End get-started terminal -->
+
+  </main>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress
+    window.onscroll = function () {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      document.getElementById("progress").style.width = scrolled + "%";
+
+      // Update Nav highlighting and Breadcrumb Title
+      const sections = document.querySelectorAll('.section, #products, #intro');
+      let currentSectionId = "";
+      let currentTitle = "Introduction";
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 200 && rect.bottom >= 200) {
+          currentSectionId = section.getAttribute('id');
+          if (section.querySelector('h2')) currentTitle = section.querySelector('h2').textContent.trim();
+          else if (section.querySelector('h1')) currentTitle = section.querySelector('h1').textContent.trim();
+        }
+      });
+
+      if (currentSectionId) {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSectionId) {
+            link.classList.add('active');
+          }
+        });
+        document.getElementById('current-step').textContent = currentTitle;
+      }
+    };
+
+    // Intersection Observer for Animations
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Copy Code Function
+    function copyCode(id) {
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = event.target;
+        const originalText = btn.innerText;
+        btn.innerText = "Copié ✅";
+        btn.style.background = "#059669";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "var(--primary)";
+        }, 2000);
+      });
+    }
+  </script>
+  <!-- Prism.js core and languages -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-arduino.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+
+</html>
