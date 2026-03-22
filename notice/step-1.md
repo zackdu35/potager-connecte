@@ -1,6 +1,6 @@
 # 🛠️ NOTICE DE MONTAGE - ÉTAPE 1 : Le Puzzle sur le bureau
 
-⚠️ **RÈGLE D'OR :** Ne branche Surtout PAS la batterie ni le câble USB tant que le monsieur sur le dessin n'a pas dit que c'était fini !
+⚠️ **RÈGLE D'OR :** Ne branche Surtout PAS la batterie ni le câble USB tant que tu n'as pas terminé tous les branchements de cette étape !
 
 ### 📦 INVENTAIRE DES PIÈCES POUR CETTE ÉTAPE :
 Vide ton carton et pose ces éléments sur ton bureau :
