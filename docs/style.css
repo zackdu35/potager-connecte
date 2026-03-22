@@ -325,12 +325,14 @@ b, strong {
 
 .code-header button {
   background: var(--primary);
-  color: #fff;
+  color: #020617;
   border: none;
   padding: 4px 12px;
   border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: var(--transition);
 }

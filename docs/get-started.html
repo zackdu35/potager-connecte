@@ -880,11 +880,13 @@ void loop() {
       navigator.clipboard.writeText(code).then(() => {
         const btn = event.target;
         const originalText = btn.innerText;
-        btn.innerText = "Copié ✅";
+        btn.innerText = "COPIÉ ✅";
         btn.style.background = "#059669";
+        btn.style.color = "#020617";
         setTimeout(() => {
-          btn.innerText = originalText;
+          btn.innerText = "COPIER";
           btn.style.background = "var(--primary)";
+          btn.style.color = "#020617";
         }, 2000);
       });
     }
