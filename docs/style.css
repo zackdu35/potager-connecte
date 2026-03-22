@@ -33,6 +33,11 @@ body {
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) var(--bg-darker);
+  cursor: url('assets/cursor-premium.svg') 12 12, auto;
+}
+
+a, button, .component-pill {
+  cursor: url('assets/pointer-premium.svg') 20 14, pointer;
 }
 
 body::-webkit-scrollbar {

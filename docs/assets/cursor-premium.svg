@@ -1,0 +1,8 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <g transform="translate(8, 8)">
+    <path d="M4 4 L22 13 L14 15 L19 23 L16 24 L11 16 L5 21 Z" stroke="rgba(16,185,129,0.15)" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M4 4 L22 13 L14 15 L19 23 L16 24 L11 16 L5 21 Z" stroke="rgba(16,185,129,0.3)" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M4 8 L22 17 L14 19 L19 27 L16 28 L11 20 L5 25 Z" fill="rgba(0,0,0,0.5)"/>
+    <path d="M4 4 L22 13 L14 15 L19 23 L16 24 L11 16 L5 21 Z" fill="#020617" stroke="#10b981" stroke-width="1.8" stroke-linejoin="round"/>
+  </g>
+</svg>
