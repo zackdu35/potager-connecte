@@ -94,8 +94,8 @@
             </div>
           </div>
 
-          <a href="get-started.html" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.25rem 2.5rem; background: var(--primary); color: #020617; text-decoration: none; border-radius: 99px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 50px rgba(16, 185, 129, 0.6)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 30px rgba(16, 185, 129, 0.4)';">
-            <i data-lucide="rocket"></i> Accepter la mission
+          <a href="get-started.html" onclick="launchMission(event)" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.25rem 2.5rem; background: var(--primary); color: #020617; text-decoration: none; border-radius: 99px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;" onmouseover="if(!this.classList.contains('launching')){this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 50px rgba(16, 185, 129, 0.6)';}" onmouseout="if(!this.classList.contains('launching')){this.style.transform='scale(1)'; this.style.boxShadow='0 0 30px rgba(16, 185, 129, 0.4)';}">
+            <i data-lucide="rocket"></i> <span id="mission-text">Accepter la mission</span>
           </a>
           
           <p style="margin-top: 3rem; font-size: 0.85rem; color: #64748b; font-style: italic;">
@@ -174,6 +174,104 @@
           btn.style.background = "var(--primary)";
         }, 2000);
       });
+    }
+
+    // Launch Mission Animation
+    function launchMission(event) {
+      event.preventDefault();
+      const btn = event.currentTarget;
+      const targetUrl = btn.getAttribute('href');
+      const rocket = btn.querySelector('svg');
+      const text = btn.querySelector('#mission-text');
+      
+      if (rocket && text) {
+        btn.classList.add('launching');
+        
+        // Fix button width so it doesn't shrink when we hide the rocket
+        const btnWidth = btn.offsetWidth;
+        btn.style.width = btnWidth + 'px';
+        btn.style.justifyContent = 'center';
+        
+        // Clone the rocket for the fly-away animation
+        const rect = rocket.getBoundingClientRect();
+        const flyingRocket = rocket.cloneNode(true);
+        
+        flyingRocket.style.position = 'fixed';
+        flyingRocket.style.left = '0'; // we will use translate for everything
+        flyingRocket.style.top = '0';
+        flyingRocket.style.width = rect.width + 'px';
+        flyingRocket.style.height = rect.height + 'px';
+        flyingRocket.style.zIndex = '9999';
+        flyingRocket.style.color = '#10b981'; // Green color
+        flyingRocket.style.filter = 'drop-shadow(0 0 15px rgba(16, 185, 129, 0.8))';
+        
+        // Setup initial position with CSS variables
+        flyingRocket.style.transform = `translate(${rect.left}px, ${rect.top}px) scale(1) rotate(0deg)`;
+        
+        document.body.appendChild(flyingRocket);
+        
+        // Inject curve animation
+        if (!document.getElementById('rocket-curve-style')) {
+          const style = document.createElement('style');
+          style.id = 'rocket-curve-style';
+          style.innerHTML = `
+            @keyframes smoothCurveRocket {
+              0% { 
+                transform: translate(var(--startX), var(--startY)) scale(1) rotate(0deg); 
+              }
+              25% { 
+                transform: translate(calc(var(--startX) + 150px), calc(var(--startY) - 200px)) scale(1.5) rotate(20deg); 
+              }
+              50% { 
+                transform: translate(calc(var(--startX) - 100px), calc(var(--startY) - 500px)) scale(2.2) rotate(-30deg); 
+              }
+              75% { 
+                transform: translate(calc(var(--startX) + 100px), calc(var(--startY) - 800px)) scale(3) rotate(20deg); 
+              }
+              100% { 
+                transform: translate(calc(var(--startX)), calc(var(--startY) - 1200px)) scale(4) rotate(0deg); 
+                opacity: 0;
+              }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        // Set CSS vars for animation start position
+        flyingRocket.style.setProperty('--startX', rect.left + 'px');
+        flyingRocket.style.setProperty('--startY', rect.top + 'px');
+        
+        // Hide original rocket completely to center text
+        rocket.style.display = 'none';
+        
+        // Button style changes
+        btn.style.pointerEvents = 'none';
+        btn.style.background = 'transparent';
+        btn.style.color = '#10b981';
+        btn.style.border = '2px solid #10b981';
+        btn.style.boxShadow = '0 0 20px rgba(16, 185, 129, 0.2)';
+        btn.style.transform = 'scale(0.95)';
+        
+        // Animate text transition
+        text.style.transition = 'opacity 0.2s ease';
+        text.style.opacity = '0';
+        setTimeout(() => {
+          text.textContent = 'Décollage...';
+          text.style.opacity = '1';
+        }, 200);
+        
+        // Start animation
+        setTimeout(() => {
+          flyingRocket.style.animation = 'smoothCurveRocket 1.5s ease-in forwards';
+        }, 50);
+        
+        setTimeout(() => {
+          sessionStorage.setItem('missionStarted', 'true');
+          window.location.href = targetUrl;
+        }, 1600);
+      } else {
+        window.location.href = targetUrl;
+      }
     }
   </script>
   <!-- Prism.js core and languages -->
